@@ -23,6 +23,7 @@ Basic service liveness check.
 
 * **Response Code**: `200 OK`
 * **Payload**:
+
 ```json
 {
   "status": "ok"
@@ -36,6 +37,7 @@ Returns the cached or freshly retrieved status from the upstream VPN server.
 * **Success Response Code**: `200 OK`
 * **Failure Response Code**: `503 Service Unavailable` (if any upstream query fails or times out)
 * **Success Payload**:
+
   ```json
   {
     "public_ip": "198.51.100.42",
@@ -43,7 +45,9 @@ Returns the cached or freshly retrieved status from the upstream VPN server.
     "status": "running"
   }
   ```
+
 * **Error Payload**:
+
   ```json
   {
     "error": "Upstream errors: HTTP Error: ..."
