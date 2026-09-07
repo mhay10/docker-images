@@ -50,7 +50,7 @@ async def get_vpn_endpoint(session: ClientSession, endpoint: str) -> dict[str, A
             text = await response.text()
             return json.loads(text)
 
-    except asyncio.ClientError as e:
+    except aiohttp.ClientError as e:
         return {"error": f"HTTP Error: {e}"}
     except json.JSONDecodeError as e:
         return {"error": f"Invalid JSON: {e}"}
