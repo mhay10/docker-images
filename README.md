@@ -31,7 +31,7 @@ An asynchronous ASGI microservice running on Python 3.14 and served with Hyperco
 
 ## CI/CD Automation
 
-IMages are built and published to the GitHub Container Registry (`ghcr.io`) via GitHub Actions:
+Images are built and published to the GitHub Container Registry (`ghcr.io`) via GitHub Actions:
 
 * **Caddy Workflow** (`build-caddy.yml`): Triggers on tags matching `caddy-v*` or manaully.
 * **VPN Status Workflow** (`build-vpnstatus.yml`): Triggers on tags matching `vpnstatus-v*` or manaully.
