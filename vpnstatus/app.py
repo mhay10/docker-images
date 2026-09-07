@@ -6,10 +6,9 @@ from typing import Any
 
 import aiohttp
 from aiohttp import ClientSession
-from quart import Quart, Response, jsonify
-
-from hypercorn.config import Config
 from hypercorn.asyncio import serve
+from hypercorn.config import Config
+from quart import Quart, Response, jsonify
 
 # API Server Details
 app = Quart(__name__)
