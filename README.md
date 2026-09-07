@@ -31,9 +31,11 @@ An asynchronous ASGI microservice running on Python 3.14 and served with Hyperco
 
 ## CI/CD Automation
 
-Each container directory is tracked and built independently through GitHub Actions:
+IMages are built and published to the GitHub Container Registry (`ghcr.io`) via GitHub Actions:
 
-* **Caddy Workflow** (`build-caddy.yml`): Triggers on modifications within the `caddy/` directory.
-* **VPN Status Workflow** (`build-vpnstatus.yml`): Triggers on modifications within the `vpnstatus/` directory.
+* **Caddy Workflow** (`build-caddy.yml`): Triggers on tags matching `caddy-v*` or manaully.
+* **VPN Status Workflow** (`build-vpnstatus.yml`): Triggers on tags matching `vpnstatus-v*` or manaully.
 
-Both workflows manage automated image tagging, multi-platform builds, and registry publication.
+Both workflows handle image tagging via `docker/metadata-action`:
+* **Tagged releases**: Strips the prefix (`caddy-v1.2.3` -> `1.2.3`), updates the `latest` tag, and pushes to `ghcr.io`.
+* **Manual runs**: Tags the build with the short commit SHA and pushes to `ghcr.io`.
