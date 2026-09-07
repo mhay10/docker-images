@@ -8,6 +8,9 @@ import aiohttp
 from aiohttp import ClientSession
 from quart import Quart, Response, jsonify
 
+from hypercorn.config import Config
+from hypercorn.asyncio import serve
+
 # API Server Details
 app = Quart(__name__)
 SERVER_PORT = 4000
@@ -136,5 +139,9 @@ async def health() -> tuple[Response, int]:
     return jsonify({"status": "ok"}), 200
 
 
+# ==== API ASGI SERVING ====
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=SERVER_PORT)
+    config = Config()
+    config.bind = f"0.0.0.0:{SERVER_PORT}"
+    asyncio.run(serve(app, config))
